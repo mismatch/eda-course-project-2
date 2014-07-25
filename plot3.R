@@ -20,8 +20,8 @@ NEI <- readSummarySCC()
 NEI <- NEI[NEI$fips == "24510", ]
 emissionsByYearAndType <- aggregate(Emissions ~ year + type, data = NEI, sum)
 
-png("plot3.png", width = 800, height = 480)
 library(ggplot2)
+png("plot3.png", width = 800, height = 480)
 qplot(year, Emissions, data = emissionsByYearAndType, facets = . ~ type, 
       ylab = "Emissions, tons", main = "Emissions in Baltimore City") + geom_smooth()
 dev.off()
